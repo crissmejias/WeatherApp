@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hide{
+  transition: height 500ms;
+  height:0;
+  visibility: hidden;
+}
+.show{
+  transition: height 500ms; 
+  height:300px;
+  display: flex;
+  visibility: visible;
+  justify-content: center;
+
+}
