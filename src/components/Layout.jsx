@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Menu } from "./Menu";
 
+
 const Layout = (props) => {
+    const langArrow = useRef(null);
+    const cityArrow = useRef(null);
     const [menu, setMenu] = useState(false)
     const showData = ({target}) => {
         target.classList.toggle('rotate-180');
@@ -12,12 +15,12 @@ const Layout = (props) => {
         <header className="p-2 bg-gray-800 flex justify-center gap-4 items-center text-white">
         <li className="flex justify-center hover:bg-gray-500 p-2 rounded-xl relative">
             Language
-        <i className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1" onClick={showData}></i>
+        <i ref={langArrow} className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1" onClick={showData}></i>
         </li>
-        { menu && <Menu setMenu={setMenu}/>}
+        { menu && <Menu setMenu={setMenu} arrow={langArrow}/>}
         <li className="flex justify-center hover:bg-gray-500 p-2 rounded-xl relative">
             City
-        <i className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1" onClick={showData}></i>
+        <i ref={cityArrow} className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1"></i>
         </li>
         </header>
         <main className="w-full min-h-screen bg-hero bg-center grid place-items-center">  
