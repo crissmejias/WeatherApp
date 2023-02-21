@@ -9,9 +9,13 @@
 }
 .show{
   transition: height 500ms; 
-  height:300px;
+  height:150px;
   display: flex;
-  visibility: visible;
   justify-content: center;
-
+}
+.card{
+  visibility: hidden;
+}
+.rotate-custom{
+  transform: rotate(45deg);
 }
