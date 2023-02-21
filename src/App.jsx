@@ -4,15 +4,17 @@ import { Layout } from "./components/Layout";
 import { Weather } from "./components/Weather";
 import { LanguageContext } from "./context/language";
 import { useState } from "react";
-
+import { CountriesProvider } from "./context/countries";
 function App() {
-  const [lang, setLang] = useState('fr')
+  const [lang, setLang] = useState('');
   return(
-    <LanguageContext.Provider value={{lang, setLang}}>
-      <Layout>
-        <Weather/>
-    </Layout>
-    </LanguageContext.Provider>
+    <CountriesProvider>
+      <LanguageContext.Provider value={{lang, setLang}}>
+        <Layout>
+          <Weather/>
+        </Layout>
+      </LanguageContext.Provider>
+    </CountriesProvider>
   )
   } 
   export default App

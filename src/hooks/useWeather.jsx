@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { LanguageContext } from "../context/language";
+import { useCountries } from "../context/countries";
 const API_URL = 'http://api.weatherapi.com/v1/current.json'
-let key = import.meta.env.VITE_KEY;
+let key = import.meta.env.VITE_WEATHER_KEY;
 const useWeather = () =>{
-    let {lang, setLang} = useContext(LanguageContext);
+    const {country, city} = useCountries();
+    let {lang} = useContext(LanguageContext);
     const [location, setLocation] = useState([]);
     const [weatherData, setWeatherData] = useState({});
     useEffect(()=>{
@@ -15,7 +17,7 @@ const useWeather = () =>{
         })
     },[]) 
     useEffect(()=>{
-        if(location.length > 1){
+        if(location.length > 1 && !country){
             try{
             fetch(`${API_URL}?key=${key}&q=${location[0]},${location[1]}&lang=${lang}`)
             .then(data => data.json())
@@ -26,6 +28,30 @@ const useWeather = () =>{
             }
         }
     },[location, lang])
+    useEffect(()=>{
+        if(city){
+            try{
+            fetch(`${API_URL}?key=${key}&q=${city}&lang=${lang}`)
+            .then(data => data.json())
+            .then(data => setWeatherData(data));
+            }
+            catch{
+                console.log(error);
+            }
+        }
+        else if(country){
+            try{
+                fetch(`${API_URL}?key=${key}&q=${country}&lang=${lang}`)
+                .then(data => data.json())
+                .then(data => setWeatherData(data));
+                }
+                catch{
+                    console.log(error);
+                }
+
+        }
+    },[city, lang, country])
+    
     return weatherData;
 }
 export {useWeather};
