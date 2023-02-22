@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useWeather } from "../hooks/useWeather";
 import loader from '/loader.gif'
 import { Forecast } from "./Forecast";
@@ -21,7 +21,9 @@ const Weather = () => {
         </div>
         </div>
         <div className={`${!moreInfo && 'hide'} ${ moreInfo && "show"} gap-3`}>
-           <Forecast/>
+           {moreInfo && 
+               <Forecast/>
+           }
         </div>
         </>
     )
