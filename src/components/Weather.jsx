@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWeather } from "../hooks/useWeather";
 import loader from '/loader.gif'
+import { Forecast } from "./Forecast";
 const Weather = () => {
     const [moreInfo, setMoreInfo] = useState(false)
     const showData = ({target}) => {
@@ -20,7 +21,7 @@ const Weather = () => {
         </div>
         </div>
         <div className={`${!moreInfo && 'hide'} ${ moreInfo && "show"} gap-3`}>
-           
+           <Forecast/>
         </div>
         </>
     )
