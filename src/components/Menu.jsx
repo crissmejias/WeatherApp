@@ -1,10 +1,10 @@
 import { languagesArray } from "../models/languages"
 import { LanguageContext } from "../context/language"
 import { useWeather } from "../hooks/useWeather"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { useCountries } from "../context/countries"
 import { City, Country } from "country-state-city"
-const Menu = ({setMenu, arrow, description, type}) => {
+const Menu = ({menu,setMenu, arrow, description, type}) => {
     const {lang, setLang} = useContext(LanguageContext);
     const {country, setCountry, city, setCity} = useCountries();
     const [allCities, setAllCities] = useState([]);
@@ -21,6 +21,7 @@ const Menu = ({setMenu, arrow, description, type}) => {
         setMenu(prev => !prev)
         arrow.current.classList.toggle('rotate-180');
     }
+   
     const countries = Country.getAllCountries();
     useEffect(()=>{
         if(country.length > 1){
@@ -29,7 +30,7 @@ const Menu = ({setMenu, arrow, description, type}) => {
     },[country]);
     if(type === 'lang'){
         return(
-            <div className="absolute text-white flex flex-col items-center justify-evenly top-14 w-1/3 rounded-br-lg rounded-bl-lg h-[150px] z-10 bg-gray-800">
+            <div  id='menu' className="absolute text-white flex flex-col items-center justify-evenly top-14 w-1/3 rounded-br-lg rounded-bl-lg h-[150px] z-10 bg-gray-800">
             <h2 className="text-center pt-2 text-lg font-semibold">{description}</h2>
             <select defaultValue='default' onChange={handleLangChange} className="w-2/3 text-sm text-gray-800 text-center py-2  rounded-md">    
             <option value='default' disabled>{description}</option>
@@ -42,7 +43,7 @@ const Menu = ({setMenu, arrow, description, type}) => {
 }
 if(type === 'city'){
     return(
-        <div className="absolute text-white flex flex-col items-center justify-evenly top-14 w-1/3 rounded-br-lg rounded-bl-lg h-[250px] z-10 bg-gray-800">
+        <div  id='menu' className="absolute text-white flex flex-col items-center justify-evenly top-14 w-1/3 rounded-br-lg rounded-bl-lg h-[250px] z-10 bg-gray-800">
         <h2 className="text-center pt-2 text-lg font-semibold">{description[0]}</h2>
         <select defaultValue='default' onChange={handleCountryChange} className="w-2/3 text-sm text-gray-800 text-center py-2 rounded-md">    
         <option value='default' disabled>{description[0]}</option>

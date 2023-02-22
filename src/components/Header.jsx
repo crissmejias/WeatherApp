@@ -24,12 +24,12 @@ const Header = () => {
             Language
         <i ref={langArrow} className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1" onClick={showlangMenu}></i>
         </li>
-        { langMenu && <Menu type='lang' setMenu={setLangMenu} arrow={langArrow} description={'Select your Language'} />}
+        { langMenu && <Menu type='lang'  menu={langMenu}  setMenu={setLangMenu} arrow={langArrow} description={'Select your Language'} />}
         <li className="flex justify-center hover:bg-gray-500 p-2 rounded-xl relative">
             City
         <i ref={cityArrow} className="fi fi-rr-angle-small-down transition duration-300 relative -right-1 top-1" onClick={showCityMenu}></i>
         </li>
-        { cityMenu && <Menu type='city' setMenu={setCityMenu} arrow={cityArrow}  description={['Select your Country','Select your City']} />}
+        { cityMenu && <Menu type='city' menu={cityMenu} setMenu={setCityMenu} arrow={cityArrow}  description={['Select your Country','Select your City']} />}
         </header>
     )
 }
