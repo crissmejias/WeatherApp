@@ -57,7 +57,7 @@ if(type === 'city'){
         <select defaultValue='default'  className="w-2/3 text-sm text-gray-800 text-center py-2 rounded-md" onChange={handleCityChange}>    
         <option value='default'  disabled>{description[1]}</option>
         {allCities.map(el=>{
-            return <option key={`${el.name}, ${el.stateCode}`} value={el.name}>{`${el.name}, ${el.stateCode}`}</option>
+            return <option key={`${el.name}, ${el.stateCode}`} value={`${el.latitude},${el.longitude}`}>{`${el.name}, ${el.stateCode}`}</option>
         })}
         </select>
         </>
