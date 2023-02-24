@@ -8,7 +8,7 @@ const Layout = (props) => {
     return(
     <>
         <Header />
-        <main className={`w-full min-h-screen ${(!current?.is_day) ? "bg-hero":"bg-dark-hero"} bg-center grid grid-rows-[1fr_200px] place-items-center`}>  
+        <main className={`w-full min-h-screen ${(current?.is_day) ? "bg-hero":"bg-dark-hero"} bg-center grid grid-rows-[1fr_200px] place-items-center`}>  
       <div className="blur-[0.4px py-4 container relative w-1/3 min-w-[350px] flex flex-col shadow-[1px_4px_5px_3px] place-self-center sef-center shadow-gray-900/50 gap-4 rounded-lg">
         {props.children}
       </div>
