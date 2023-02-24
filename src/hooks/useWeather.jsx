@@ -19,7 +19,9 @@ const useWeather = () =>{
     useEffect(()=>{
         if(location.length > 1 && !country){
             try{
-            fetch(`${API_URL}?key=${key}&q=${location[0]},${location[1]}&lang=${lang}`)
+            fetch(`${API_URL}?key=${key}&q=${location[0]},${location[1]}&lang=${lang}`,{
+                referrerPolicy: 'unsafe-url'
+            })
             .then(data => data.json())
             .then(data => setWeatherData(data));
             }
@@ -31,7 +33,9 @@ const useWeather = () =>{
     useEffect(()=>{
         if(city){
             try{
-            fetch(`${API_URL}?key=${key}&q=${city}&days=1&lang=${lang}`)
+            fetch(`${API_URL}?key=${key}&q=${city}&days=1&lang=${lang}`,{
+                referrerPolicy: 'unsafe-url'
+            })
             .then(data => data.json())
             .then(data => setWeatherData(data));
             }
